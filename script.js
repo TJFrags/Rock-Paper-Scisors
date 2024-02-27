@@ -18,7 +18,7 @@ function getcomputer(){
     }
 }
 
-function play(){
+function play(playerName){
     player = prompt("whats your move?", "rock")
     computer = getcomputer()
     let winner = "draw"
@@ -31,13 +31,13 @@ function play(){
         }
         else if (player === "rock" && computer == "scisors"){
             console.log("You Win! Rock beats Scisors")
-            winner = "Player 1"
+            winner = playerName
             return winner
         }
 
         else if (player === "paper" && computer == "rock"){
             console.log("You Win! Paper beats rock")
-            winner = "Player 1"
+            winner = playerName
             return winner
         }
         else if (player === "paper" && computer == "scisors"){
@@ -48,7 +48,7 @@ function play(){
 
         else if (player === "scisors" && computer == "paper"){
             console.log("You Win! Paper beats rock")
-            winner = "Player 1"
+            winner = playerName
             return winner
         }
         else if (player === "scisors" && computer == "rock"){
@@ -60,7 +60,31 @@ function play(){
         
     }
     else{
-        return winner
+        console.log("draw")
+        play()
     }
 }
-console.log(random(3, 1));
+
+function playMatch(bestOf = 1){
+    let playerScore = 0
+    let compScore = 0
+    let round = 1
+
+    let playerName = prompt("Whhat is your name?", "Player")
+    while(round <= bestOf){
+
+        result = play(playerName)
+        if (result === "Computer"){
+            ++compScore
+        }
+        else if (result === playerName){
+            ++playerScore
+        }
+        console.log(playerName + ": " + playerScore)
+        console.log("Computer: " + compScore)
+
+        round++
+    }
+    matchWinner = playerScore > compScore ? playerName : "Computer"
+    return "The winner of the match is: " + matchWinner
+}
