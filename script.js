@@ -1,28 +1,28 @@
 function random(max, min){
-    return Math.floor(Math.random() * (max - min)) + min;
+    randmomNum =  Math.floor(Math.random() * (max - min + 1) + min)
+    console.log(randmomNum)
+    return randmomNum
 }
 
 function getcomputer(){
-    lst = []
-    number = random()
+    number = random(3,1 )
 
     if (number === 1){
-        return (1, "rock")
+        return "rock"
     }
     else if (number === 2){
-        return (2, "paper")
+        return "paper"
     }
     else if (number === 3){
-        return (3, "scisors")
+        return "scisors"
     }
 }
 
 function play(){
-    player = prompt()
+    player = prompt("whats your move?", "rock")
     computer = getcomputer()
+    let winner = "draw"
     if(player !== computer){
-
-        let winner = "draw"
 
         if (player === "rock" && computer == "paper"){
             console.log("You lose. Paper beats rock")
@@ -63,4 +63,4 @@ function play(){
         return winner
     }
 }
-console.log(random(4, 1));
+console.log(random(3, 1));
