@@ -1,3 +1,35 @@
+body{
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+.modal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+}
+
+.modal-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+    border-radius: 10px;
+    background-color: white;
+    width: 20%;
+    height: 35%;
+}
+
+.rounds-input{
+    width: 50px;
+}
+
 
 .game{
     display: flex;
