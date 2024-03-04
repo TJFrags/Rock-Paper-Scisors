@@ -1,6 +1,22 @@
+const btnStartMatch = document.querySelector(".start-button");
+const inputName = document.querySelector(".name-input");
+const inputRounds = document.querySelector(".rounds-input");
+const modal = document.querySelector(".modal");
+const btnsMoves = document.querySelectorAll(".moves > *");
+const compScore = document.querySelector("#compScore");
+const playerScore = document.querySelector("#playerScore");
+const playerName = document.querySelector(".score-player > h2");
+const divWinner = document.querySelector(".winner");
+const WinnerText = document.querySelector(".winner > h2");
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+let rounds, currentRound;
+
 function random(max, min){
     randmomNum =  Math.floor(Math.random() * (max - min + 1) + min)
-    console.log(randmomNum)
     return randmomNum
 }
 
@@ -18,73 +34,98 @@ function getcomputer(){
     }
 }
 
-function play(playerName){
-    player = prompt("whats your move?", "rock")
-    computer = getcomputer()
-    let winner = "draw"
+function play(move, computerScoreHolder, playerScoreHolder){
+    let player = move;
+    let computer = getcomputer();
     if(player !== computer){
 
         if (player === "rock" && computer == "paper"){
-            console.log("You lose. Paper beats rock")
-            winner = "Computer"
-            return winner
+            computerScoreHolder.textContent = Number(computerScoreHolder.textContent) + 1;
         }
         else if (player === "rock" && computer == "scisors"){
-            console.log("You Win! Rock beats Scisors")
-            winner = playerName
-            return winner
+            playerScoreHolder.textContent = Number(playerScoreHolder.textContent) + 1;
         }
 
         else if (player === "paper" && computer == "rock"){
-            console.log("You Win! Paper beats rock")
-            winner = playerName
-            return winner
+            playerScoreHolder.textContent = Number(playerScoreHolder.textContent) + 1;
+
         }
         else if (player === "paper" && computer == "scisors"){
-            console.log("You lose. scisors beats paper")
-            winner = "Computer"
-            return winner
+            computerScoreHolder.textContent = Number(computerScoreHolder.textContent) + 1;
+
         }
 
         else if (player === "scisors" && computer == "paper"){
-            console.log("You Win! Paper beats rock")
-            winner = playerName
-            return winner
+            playerScoreHolder.textContent = Number(playerScoreHolder.textContent) + 1;
+
         }
         else if (player === "scisors" && computer == "rock"){
-            console.log("You lose! rock beats scisors")
-            winner = "Computer"
-            return winner
-    }
+            computerScoreHolder.textContent = Number(computerScoreHolder.textContent) + 1;
+        }
+
+        if (currentRound >= rounds){
+            console.log("EEEEEEEEEENNNNNNNNNNNNNNNNNNNNNNNNNNNDDDDDDDDDDDDDDDDDDDDDDDDD");
+            winner = Number(computerScoreHolder.textContent) > Number(playerScoreHolder.textContent) ? 
+            "computer" : Number(computerScoreHolder.textContent) === Number(playerScoreHolder.textContent)?
+            "draw" : playerName;
+            endMatch(winner);
+            
+        }
+        else{
+            currentRound++;
+
+        }
+
 
         
     }
     else{
-        console.log("draw")
-        play()
+        console.log("draw");
+
+        play(arguments[0], arguments[1], arguments[2])
     }
 }
 
-function playMatch(bestOf = 1){
-    let playerScore = 0
-    let compScore = 0
-    let round = 1
+function startMatch(){
+    rounds = Number(inputRounds.value);
+    playerName.textContent = inputName.value;
+    currentRound = 1;
 
-    let playerName = prompt("Whhat is your name?", "Player")
-    while(round <= bestOf){
-
-        result = play(playerName)
-        if (result === "Computer"){
-            ++compScore
-        }
-        else if (result === playerName){
-            ++playerScore
-        }
-        console.log(playerName + ": " + playerScore)
-        console.log("Computer: " + compScore)
-
-        round++
-    }
-    matchWinner = playerScore > compScore ? playerName : "Computer"
-    return "The winner of the match is: " + matchWinner
 }
+
+async function endMatch(winner){
+    winner = playerName;
+    if (winner === playerName){
+        divWinner.style.display = "flex";
+        divWinner.setAttribute("justify-content", "flex-end");
+    }
+    else if (winner === "draw"){
+        divWinner.setAttribute("justify-content", "center");
+
+    }
+    else if (winner === "computer"){
+        divWinner.setAttribute("justify-content", "flex-start")
+
+    }
+
+    await sleep(5000);
+
+    inputName.setAttribute("value", playerName);
+    inputRounds.setAttribute("value", rounds)
+    modal.style.display = "flex";
+    compScore.textContent = 0;
+    playerScore.textContent = 0
+
+
+
+}
+
+
+btnStartMatch.addEventListener("click", () => {
+    startMatch();
+    modal.style.display = "none";
+})
+
+btnsMoves.forEach((button) => {
+    button.addEventListener("click", () => play(button.textContent.toLowerCase(), compScore, playerScore))
+})
