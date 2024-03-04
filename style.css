@@ -2,6 +2,9 @@ body{
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    background: url(/images/Landscape.jpg);
+    background-position: center;
+    background-size:cover;
 }
 .modal{
     display: flex;
@@ -70,6 +73,8 @@ body{
     display: flex;
     gap: 100px;
 }
+
+
 
 .score-computer, .score-player{
     display: flex;

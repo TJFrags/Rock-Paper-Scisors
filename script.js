@@ -8,8 +8,8 @@ const playerScore = document.querySelector("#playerScore");
 const playerName = document.querySelector(".score-player > h2");
 const divWinner = document.querySelector(".winner");
 const WinnerText = document.querySelector(".winner > h2");
-const roundCounter = documet.querySelector("round-status > h2")
-const drawText = documet.querySelector("round-status > h3")
+const roundCounter = document.querySelector(".round-status > h2");
+const drawText = document.querySelector(".round-status > h3");
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -36,7 +36,9 @@ function getcomputer(){
     }
 }
 
-function play(move, computerScoreHolder, playerScoreHolder){
+async function play(move, computerScoreHolder, playerScoreHolder){
+    drawText.textContent = "";
+
     let player = move;
     let computer = getcomputer();
     if(player !== computer){
@@ -70,11 +72,12 @@ function play(move, computerScoreHolder, playerScoreHolder){
             winner = Number(computerScoreHolder.textContent) > Number(playerScoreHolder.textContent) ? 
             "computer" : Number(computerScoreHolder.textContent) === Number(playerScoreHolder.textContent)?
             "draw" : playerName;
-            endMatch(wnner);
+            endMatch(winner);
             
         }
         else{
             currentRound++;
+            roundCounter.textContent = currentRound + "/" + rounds;
 
         }
 
@@ -82,15 +85,15 @@ function play(move, computerScoreHolder, playerScoreHolder){
         
     }
     else{
-        console.log("draw");
-
-        play(arguments[0], arguments[1], arguments[2])
+        drawText.textContent = "Draw";        
     }
 }
 
 function startMatch(){
     rounds = Number(inputRounds.value);
     playerName.textContent = inputName.value;
+    roundCounter.textContent = "1/" + rounds;
+
     currentRound = 1;
 
 }
@@ -112,6 +115,7 @@ async function endMatch(winner){
     }
 
     await sleep(3000);
+    roundCounter.textContent = "0/0";
 
     inputName.setAttribute("value", playerName);
     inputRounds.setAttribute("value", rounds);
