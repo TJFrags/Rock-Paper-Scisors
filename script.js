@@ -8,6 +8,8 @@ const playerScore = document.querySelector("#playerScore");
 const playerName = document.querySelector(".score-player > h2");
 const divWinner = document.querySelector(".winner");
 const WinnerText = document.querySelector(".winner > h2");
+const roundCounter = documet.querySelector("round-status > h2")
+const drawText = documet.querySelector("round-status > h3")
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -68,7 +70,7 @@ function play(move, computerScoreHolder, playerScoreHolder){
             winner = Number(computerScoreHolder.textContent) > Number(playerScoreHolder.textContent) ? 
             "computer" : Number(computerScoreHolder.textContent) === Number(playerScoreHolder.textContent)?
             "draw" : playerName;
-            endMatch(winner);
+            endMatch(wnner);
             
         }
         else{
@@ -94,27 +96,28 @@ function startMatch(){
 }
 
 async function endMatch(winner){
-    winner = playerName;
+    //winner = playerName;
     if (winner === playerName){
         divWinner.style.display = "flex";
-        divWinner.setAttribute("justify-content", "flex-end");
+        divWinner.style.justifyContent = "flex-end";
     }
     else if (winner === "draw"){
-        divWinner.setAttribute("justify-content", "center");
-
+        WinnerText.textContent = "Draw";
+        divWinner.style.display = "flex";
+        divWinner.style.justifyContent = "center";
     }
     else if (winner === "computer"){
-        divWinner.setAttribute("justify-content", "flex-start")
-
+        divWinner.style.display = "flex";
+        divWinner.style.justifyContent = "flex-start";
     }
 
-    await sleep(5000);
+    await sleep(3000);
 
     inputName.setAttribute("value", playerName);
-    inputRounds.setAttribute("value", rounds)
+    inputRounds.setAttribute("value", rounds);
     modal.style.display = "flex";
     compScore.textContent = 0;
-    playerScore.textContent = 0
+    playerScore.textContent = 0;
 
 
 
@@ -124,6 +127,7 @@ async function endMatch(winner){
 btnStartMatch.addEventListener("click", () => {
     startMatch();
     modal.style.display = "none";
+    divWinner.style.display = "none";
 })
 
 btnsMoves.forEach((button) => {
