@@ -1,12 +1,34 @@
+@font-face {
+    font-family: BubbleGums;
+    src: url(fonts/BUBBLEGUMS.TTF);
+}
+
+@font-face {
+    font-family: StreetArt;
+    src: url(fonts/FromStreetArt.woff);
+}
+
+@font-face {
+    font-family: Qwibble;
+    src: url(fonts/GWIBBLE_.TTF);
+}
+
 body{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
     background: url(/images/Landscape.jpg);
     background-position: center;
     background-size:cover;
+    height: 100vh;
 }
+
 .modal{
+    visibility: visible;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,21 +42,44 @@ body{
 .modal-content{
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
+    text-align: center;
     gap: 20px;
     border-radius: 10px;
     background-color: white;
     width: 20%;
-    height: 35%;
+    height: max-content;
+    font-family: Qwibble;
+
+}
+
+.modal-content p{
+    font-size: 20px;
+    margin: 0;
+}
+.modal-content h1{
+    margin: 10px 0;
+    font-size: 50px;
 }
 
 .rounds-input{
-    width: 50px;
+    width: 20%;
+    text-align: center;
+}
+
+.name-input{
+    width: 60%;
+    text-align: center;
+}
+
+.button {
+    margin: 50px;
 }
 
 
 .game{
+    visibility:hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -44,6 +89,10 @@ body{
     width: 80dvh;
     margin: auto;
     border: solid black;
+    border-radius: 5px;
+    background: url(/images/TheCat.jpg);
+    background-position: center;
+    background-size: cover;
 }
 
 .header{
@@ -52,18 +101,25 @@ body{
     align-items: center;
 }
 
+.header h1{
+    font-size: 50px;
+    font-family: BubbleGums;
+    text-align: center;
+}
+
 .status{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-
 .winner{
-    display: none;
-    justify-content: start;
+    display: flex;
     align-items: center;
-    width: 80%;
+    width: 90%;
+    height: 30px;
+    font-family: BubbleGums;
+    font-size: 16px;
 }
 
 
@@ -71,7 +127,8 @@ body{
     justify-content: center;
     align-items: center;
     display: flex;
-    gap: 100px;
+    gap: 20px;
+    font-family: Qwibble;
 }
 
 
@@ -80,16 +137,80 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    gap: 40px;
     border: solid 1px black;
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
     box-shadow: 2px 2px;
     margin: 2%;
+    font-size: 22px;
+    overflow: hidden;
+
 }
+
+.score-computer h3, .score-player h3{
+    font-size: 36px;
+    margin: 0;
+    padding: 0;
+}
+
+.icons{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.icons ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+
+.round-status{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 150px;
+    overflow: hidden;
+}
+
+
+
+.score-computer h2, .score-player h2{
+    margin: 0;
+    padding: 0;
+
+}
+
+.round-status > h2, h3{
+    font-size: 36px;
+}
+
 .moves{
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     width: 100%;
     gap: 20px;
+}
+
+.move-button {
+    font-size: 60px;
+    background-position: center;
+    background-size: cover;
+    background-color: transparent;
+    border: none;
+
+}
+
+#scissors{
+    transform: rotate(90deg);
 }

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a81590ecb5.js" crossorigin="anonymous"></script>
     <script src="script.js" defer></script>
     <title>Rock Paper Scisors</title>
 </head>
@@ -13,12 +14,12 @@
         <div class="modal-content">
             <h1>NEW GAME</h1>
             <div class="name">
-                <label for="name">Name</label>
-                <input id="name" type="text" class="input name-input">
+                <p>Name</p>
+                <input id="name" type="text" class="input name-input" value="Player">
             </div>
             <div class="rounds">
-                <label for="rounds">Rounds</label>
-                <input id="rounds" type="number" class="input rounds-input">
+                <p>Rounds</p>
+                <input id="rounds" type="number" class="input rounds-input" value="3">
             </div>
             <button class="button start-button">Start Match</button>
 
@@ -27,17 +28,24 @@
 
     <section class="game">
         <div class="header">
-            <h1>ROCK-PAPER-SCISORS</h1>
-            <h1>Shoot</h1>
+            <h1>ROCK-PAPER<br>SCISORS</h1>
         </div>
         <div class="status">
             <div class="winner">
-                <h2>winner</h2>
+                <h2></h2>
             </div>
             <div class="score">
                 <div class="score-computer">
-                    <h2>Computer</h2>
+                    <h2>CAT</h2>
                     <h3 id="compScore">0</h3>
+
+                    <div class="icons">
+                        <ul>
+                            <li><i class="fa-regular fa-hand-back-fist rock-mini-comp"></i></li>
+                            <li><i class="fa-regular fa-hand paper-mini-comp"></i></li>
+                            <li><i class="fa-regular fa-hand-scissors scissors-mini-comp"></i></li>
+                        </ul>
+                    </div>
                 </div>
 
                 <div class="round-status">
@@ -47,16 +55,23 @@
                 <div class="score-player">
                     <h2>Player</h2>
                     <h3 id="playerScore">0</h3>
-    
+                    <div class="icons">
+                        <ul>
+                            <li><i class="fa-regular fa-hand-back-fist rock-mini-player"></i></li>
+                            <li><i class="fa-regular fa-hand paper-mini-player"></i></li>
+                            <li><i class="fa-regular fa-hand-scissors scissors-mini-player"></i></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
         </div>
 
+
         <div class="moves">
-            <button id="rock" class="button move-button">Rock</button>
-            <button id="paper" class="button move-button">Paper</button>
-            <button id="scisors" class="button move-button">Scisors</button>
+            <button id="rock" class="button move-button"><i class="fa-regular fa-hand-back-fist"></i></button>
+            <button id="paper" class="button move-button"><i class="fa-regular fa-hand"></i></button>
+            <button id="scissors" class="button move-button"><i class="fa-regular fa-hand-scissors"></i></button>
 
         </div>
     </section>
