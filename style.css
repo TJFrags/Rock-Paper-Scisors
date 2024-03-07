@@ -42,7 +42,7 @@ body{
 .modal-content{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     text-align: center;
     gap: 20px;
@@ -55,12 +55,12 @@ body{
 }
 
 .modal-content p{
-    font-size: 20px;
+    font-size: 30px;
     margin: 0;
 }
 .modal-content h1{
     margin: 10px 0;
-    font-size: 50px;
+    font-size: 65px;
 }
 
 .rounds-input{
@@ -75,6 +75,14 @@ body{
 
 .button {
     margin: 50px;
+    font-size: 20px;
+    border-radius: 5px;
+    background-color: transparent;
+
+}
+.button:hover{
+    background-color: grey;
+    transition: 0.5s;
 }
 
 
@@ -102,7 +110,7 @@ body{
 }
 
 .header h1{
-    font-size: 50px;
+    font-size: 70px;
     font-family: BubbleGums;
     text-align: center;
 }
@@ -119,7 +127,7 @@ body{
     width: 90%;
     height: 30px;
     font-family: BubbleGums;
-    font-size: 16px;
+    font-size: 20px;
 }
 
 
@@ -137,20 +145,27 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     gap: 40px;
     border: solid 1px black;
     width: 200px;
     height: 200px;
     box-shadow: 2px 2px;
     margin: 2%;
-    font-size: 22px;
+    font-size: 30px;
     overflow: hidden;
+    padding: 10px;
+
+}
+
+.score-computer h2, .score-player h2{
+    margin: 0;
+    padding: 0;
 
 }
 
 .score-computer h3, .score-player h3{
-    font-size: 36px;
+    font-size: 50px;
     margin: 0;
     padding: 0;
 }
@@ -161,12 +176,17 @@ body{
     justify-content: center;
 }
 
-.icons ul{
+.icons ul, li{
     margin: 0;
     padding: 0;
     list-style: none;
     display: flex;
     justify-content: space-between;
+    gap: 10px;
+}
+
+.fa-regular{
+    font-size: 40px;
 }
 
 
@@ -179,19 +199,13 @@ body{
     align-items: center;
     text-align: center;
     width: 150px;
-    overflow: hidden;
 }
 
 
 
-.score-computer h2, .score-player h2{
-    margin: 0;
-    padding: 0;
-
-}
 
 .round-status > h2, h3{
-    font-size: 36px;
+    font-size: 56px;
 }
 
 .moves{
@@ -202,7 +216,7 @@ body{
     gap: 20px;
 }
 
-.move-button {
+.move-button{
     font-size: 60px;
     background-position: center;
     background-size: cover;
@@ -210,6 +224,11 @@ body{
     border: none;
 
 }
+
+.move-button .fa-regular{
+    font-size: 60px;
+}
+
 
 #scissors{
     transform: rotate(90deg);
