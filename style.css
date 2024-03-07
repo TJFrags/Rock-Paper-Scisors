@@ -80,7 +80,7 @@ body{
     background-color: transparent;
 
 }
-.button:hover{
+.start-button:hover{
     background-color: grey;
     transition: 0.5s;
 }
