@@ -21,7 +21,7 @@ body{
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    background: url(/images/Landscape.jpg);
+    background: url(../images/Landscape.jpg);
     background-position: center;
     background-size:cover;
     height: 100vh;
@@ -90,7 +90,7 @@ body{
     margin: auto;
     border: solid black;
     border-radius: 5px;
-    background: url(/images/TheCat.jpg);
+    background: url(../images/TheCat.jpg);
     background-position: center;
     background-size: cover;
 }
